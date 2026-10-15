@@ -58,7 +58,7 @@
 		<meta name="darkreader-lock">
 		<link rel="stylesheet" href="{{ media }}/cascade.css?v=1">
 		<link rel="stylesheet" media="only screen and (max-width: 854px)" href="{{ media }}/mobile.css?v=2" />
-		<link rel="stylesheet" href="{{ media }}/termix.css?v=0.2.0-rc1.2">
+		<link rel="stylesheet" href="{{ media }}/termix.css?v=0.2.0-rc1.3">
 		<style>:root{--mx-i:{{ mxIntensity }}%;--mx-rain-op:calc({{ mxOpacity }} / 100)}</style>
 		<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
 		{% if (node?.css): %}

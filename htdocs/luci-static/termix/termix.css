@@ -266,6 +266,11 @@ body:not(:has(.termix-login-brand)) > header,
 .table .td,table td,.modal,#modal_overlay > .modal { background:var(--termix-panel); }
 .cbi-rowstyle-2,.tr.table-titles,.tr.cbi-section-table-titles,
 .ifacebox-head,.ifacebox .ifacebox-head[style] { background:var(--termix-raised); }
+/* Mobile rows wrap into cards; zebra backgrounds otherwise show through
+   the row padding as thick bands between records. */
+@media screen and (max-width:600px) {
+  .table .tr.cbi-rowstyle-2 { background:var(--termix-panel); }
+}
 .cbi-section-table .tr:hover .td,.cbi-section-table .tr:hover .th,
 .btn:hover,.cbi-button:hover { background:var(--termix-hover); }
 input,textarea,select,.cbi-select,.cbi-dropdown:not(.btn):not(.cbi-button),
