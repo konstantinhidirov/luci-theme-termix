@@ -336,3 +336,93 @@ header .nav .dropdown-menu li a:hover,header .nav .dropdown-menu li.termix-curre
 :root[data-darkmode="true"] .cbi-tabmenu > li:hover { background:#2b3238!important; }
 :root[data-darkmode="true"] .tabs > li.active:hover,
 :root[data-darkmode="true"] .cbi-tabmenu > li.cbi-tab:hover { background:#303840!important; }
+
+/* Matrix palette and glow adapted from jbakker81, Apache-2.0.
+   https://github.com/konstantinhidirov/luci-theme-termix/issues/1 */
+/* --mx-i (green intensity, 40-100%) is set by header.ut from the Termix Theme settings. */
+:root[data-termix-accent="matrix"][data-darkmode="false"] { --primary-color-high:#087b2b; --on-primary-color:#fff; }
+:root[data-termix-accent="matrix"][data-darkmode="true"] { --mx-g:color-mix(in srgb,#00ff41 var(--mx-i,100%),#000); --primary-color-high:var(--mx-g); --on-primary-color:#001a06; }
+:root[data-termix-accent="matrix"][data-darkmode="true"] {
+  --background-color-high:#000; --background-color-medium:#010a03; --background-color-low:#021307;
+  --border-color-high:color-mix(in srgb,var(--mx-g) 35%,#000); --border-color-medium:color-mix(in srgb,var(--mx-g) 24%,#000); --border-color-low:color-mix(in srgb,var(--mx-g) 16%,#000);
+  --text-color-highest:color-mix(in srgb,var(--mx-g) 55%,#fff); --text-color-high:var(--mx-g);
+  --text-color-medium:color-mix(in srgb,var(--mx-g) 70%,#000); --text-color-low:color-mix(in srgb,var(--mx-g) 50%,#000);
+  --termix-canvas:#000; --termix-shell:#010a03; --termix-panel:#020d05; --termix-raised:#04160a;
+  --termix-control:#000; --termix-hover:#06260f; --termix-heading:var(--text-color-highest); --termix-row-label:var(--mx-g);
+  --termix-muted:var(--text-color-medium); --termix-shadow:#00ff4120;
+  --success-color-high:var(--mx-g); --warn-color-high:#d6ff3b;
+}
+/* Surfaces that still use fixed colors in the base theme */
+:root[data-termix-accent="matrix"][data-darkmode="true"] .tabs,
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-tabmenu { background:var(--termix-shell); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .tabs > li.active,
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-tabmenu > li.cbi-tab,
+:root[data-termix-accent="matrix"][data-darkmode="true"] .tabs > li.active:hover,
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-tabmenu > li.cbi-tab:hover { background:color-mix(in srgb,var(--primary-color-high) 12%,var(--termix-panel))!important; }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .tabs > li:hover,
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-tabmenu > li:hover { background:var(--termix-hover)!important; }
+:root[data-termix-accent="matrix"][data-darkmode="true"] input[type="checkbox"]::before,
+:root[data-termix-accent="matrix"][data-darkmode="true"] input[type="radio"]::before { background:#000; border-color:var(--border-color-high); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] input[type="checkbox"]:checked::after,
+:root[data-termix-accent="matrix"][data-darkmode="true"] input[type="radio"]:checked::after,
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-value-field input[type="checkbox"]:checked::after { background:var(--on-primary-color); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-value-field input[type="checkbox"]::after { background:var(--text-color-low); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .modal,
+:root[data-termix-accent="matrix"][data-darkmode="true"] #modal_overlay > .modal { border-color:var(--border-color-high); border-top-color:var(--primary-color-high); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .alert-message.info { background:var(--termix-raised); border-color:var(--border-color-high); color:var(--text-color-high); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .ifacebox-head { color:var(--text-color-high); }
+:root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-dropdown[open] > ul.dropdown { border-color:var(--primary-color-high); box-shadow:0 0 8px color-mix(in srgb,var(--primary-color-high) 50%,transparent); }
+:root[data-termix-accent="matrix"] body:not(:has(.termix-login-brand)) > header::-webkit-scrollbar-thumb { border-color:#000; background:var(--border-color-high); }
+:root[data-termix-accent="matrix"] body:not(:has(.termix-login-brand)) > header::-webkit-scrollbar-thumb:hover { background:var(--text-color-medium); }
+@supports (-moz-appearance:none) {
+  :root[data-termix-accent="matrix"] body:not(:has(.termix-login-brand)) > header { scrollbar-color:var(--border-color-high) transparent; }
+}
+/* Effects are independent of the palette. Runtime pauses them when needed. */
+/* Glow */
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .btn,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-button { box-shadow:0 0 3px color-mix(in srgb,var(--primary-color-high) 25%,transparent); text-shadow:0 0 4px color-mix(in srgb,var(--primary-color-high) 45%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .btn:hover,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-button:hover,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] button:hover,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] input:focus,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] select:focus,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] textarea:focus,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-dropdown[open] { box-shadow:0 0 6px color-mix(in srgb,var(--primary-color-high) 55%,transparent),0 0 14px color-mix(in srgb,var(--primary-color-high) 25%,transparent)!important; }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .btn.primary,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-page-actions .cbi-button-apply,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-page-actions .cbi-button.cbi-button-save { box-shadow:0 0 8px color-mix(in srgb,var(--primary-color-high) 45%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] header .nav > li > a:hover,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] header .nav > li.termix-section-active > a,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] header .nav .dropdown-menu li a:hover,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] header .nav .dropdown-menu li.termix-current a,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] a:hover { text-shadow:0 0 8px color-mix(in srgb,var(--primary-color-high) 85%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] header .nav .dropdown-menu li.termix-current a { box-shadow:inset 3px 0 0 var(--primary-color-high),inset 12px 0 18px -12px color-mix(in srgb,var(--primary-color-high) 50%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .tabs > li.active,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-tabmenu > li.cbi-tab { box-shadow:inset 0 -2px var(--primary-color-high),0 0 8px color-mix(in srgb,var(--primary-color-high) 35%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-progressbar > div { box-shadow:0 0 8px color-mix(in srgb,var(--primary-color-high) 70%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .label,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] #indicators [data-indicator] { text-shadow:0 0 4px color-mix(in srgb,var(--primary-color-high) 50%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] h1,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] h2,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] h3,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .termix-brand { text-shadow:0 0 6px color-mix(in srgb,var(--primary-color-high) 50%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .cbi-section,
+:root[data-termix-effects-active="true"][data-mx-glow="on"] .ifacebox { box-shadow:0 0 10px color-mix(in srgb,var(--primary-color-high) 7%,transparent); }
+:root[data-termix-effects-active="true"][data-mx-glow="on"] ::selection { background:var(--primary-color-high); color:#000; }
+/* Fixed overlays do not take up layout space or intercept input. */
+#termix-matrix-rain,
+:root[data-termix-effects-active="true"][data-mx-scanlines="on"] body::after {
+  position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:810;
+}
+#termix-matrix-rain { opacity:var(--mx-rain-op,.13); mix-blend-mode:screen; }
+:root[data-termix-effects-active="true"][data-mx-scanlines="on"] body::after {
+  content:""; background:repeating-linear-gradient(0deg,rgba(0,0,0,.13) 0 1px,transparent 1px 3px);
+}
+:root:not([data-termix-effects-active="true"]) #termix-matrix-rain { display:none; }
+.termix-effect-slider { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+.termix-effect-slider > input:not([type="range"]) { width:5.5em; min-width:0; }
+.termix-effect-range { flex:0 1 220px; max-width:100%; min-width:100px; min-height:24px; height:24px; padding:0; border:0; background:none; box-shadow:none; accent-color:var(--primary-color-high); }
+@media (prefers-reduced-motion:reduce) {
+  #termix-matrix-rain { display:none!important; }
+  :root[data-termix-effects-active="true"][data-mx-scanlines="on"] body::after { content:none; }
+}

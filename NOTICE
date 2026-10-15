@@ -11,3 +11,9 @@ licensed under the Apache License, Version 2.0.
 
 Termix served as a visual design reference. This project is not affiliated
 with Termix and does not include Termix source code or assets.
+
+The Matrix palette, glow styling, code rain concept and settings are adapted
+from the contribution by jbakker81 to issue #1, used under Apache License 2.0.
+https://github.com/konstantinhidirov/luci-theme-termix/issues/1
+The effect uses Unicode characters rendered with system fonts; no Matrix
+Code NFI font or other third-party font file is included.

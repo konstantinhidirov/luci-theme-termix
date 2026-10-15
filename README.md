@@ -1,7 +1,7 @@
 # Termix-inspired LuCI theme
 
 A responsive LuCI theme with a terminal-inspired palette and a sidebar layout.
-It offers dark, light, and system color modes, twelve accent presets, and a
+It offers dark, light, and system color modes, thirteen accent presets, and a
 custom HEX accent. This is an independent community project inspired by the
 appearance of Termix. It is not affiliated with Termix, and it contains no
 Termix code or assets.
@@ -60,6 +60,20 @@ Open **System → Termix Theme** to choose a color mode and accent. Select
 The theme starts in dark mode with an orange accent. Settings are stored in
 `/etc/config/termix` and apply to the LuCI interface on this device.
 
+The **Effects** tab contains an optional Matrix effect with code rain, glow
+and scanlines. Effects are off by default and work with any accent. The
+**Matrix** palette is independent: choosing it does not enable animation.
+Adjust the rain area, interval, character size and opacity, or choose **No
+code rain** to use only the static effects. Options are kept when the effect
+is turned off.
+
+Effects run only in dark mode. They pause in hidden tabs, while dialogs are
+open, and when the device requests reduced motion. Rendering happens in the
+browser; low-powered clients should use a longer interval or disable rain.
+Characters use installed system fonts; no third-party font file is bundled.
+
+For the current preview and device checks, see [Matrix testing](docs/matrix-testing.md).
+
 ## Build an APK
 
 Use the OpenWrt SDK matching the target release and platform. Place this
@@ -91,3 +105,4 @@ the Git repository holds the source.
 
 Licensed under Apache License 2.0. Adapted LuCI Bootstrap templates and styles
 come from the OpenWrt LuCI project. See [NOTICE](NOTICE) and [LICENSE](LICENSE).
+The Matrix effect is adapted from [jbakker81's contribution](https://github.com/konstantinhidirov/luci-theme-termix/issues/1).

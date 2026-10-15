@@ -18,5 +18,6 @@
 		<script>L.require('menu-bootstrap')</script>
 		<script src="{{ media }}/termix.js?v=4"></script>
 		{% endif %}
+		{% if (uci.get('termix', 'settings', 'matrix_fx') == 'on'): %}<script src="{{ media }}/matrix.js?v=0.2.0-rc1"></script>{% endif %}
 	</body>
 </html>

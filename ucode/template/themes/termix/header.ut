@@ -13,8 +13,22 @@
 	const themeMode = configuredMode == 'light' || configuredMode == 'system' ? configuredMode : 'dark';
 	const darkpref = themeMode == 'system' ? null : (themeMode == 'dark' ? 'true' : 'false');
 	const configuredAccent = uci.get('termix', 'settings', 'accent');
-	const accents = { orange: true, blue: true, green: true, purple: true, pink: true, cyan: true, red: true, yellow: true, teal: true, indigo: true, rose: true, lime: true, custom: true };
+	const accents = { orange: true, blue: true, green: true, purple: true, pink: true, cyan: true, red: true, yellow: true, teal: true, indigo: true, rose: true, lime: true, matrix: true, custom: true };
 	const accent = accents[configuredAccent] ? configuredAccent : 'orange';
+	const mxNum = (name, lo, hi, def) => {
+        const raw = uci.get('termix', 'settings', name);
+        const n = match(raw ?? '', /^[0-9]+$/) ? int(raw) : def;
+        return n < lo ? lo : (n > hi ? hi : n);
+    };
+    const mxFx = uci.get('termix', 'settings', 'matrix_fx') == 'on' ? 'on' : 'off';
+    const mxGlow = uci.get('termix', 'settings', 'matrix_glow') == 'off' ? 'off' : 'on';
+    const mxScanlines = uci.get('termix', 'settings', 'scanlines') == 'off' ? 'off' : 'on';
+    const mxAreaRaw = uci.get('termix', 'settings', 'rain_area');
+    const mxArea = mxAreaRaw == 'main' || mxAreaRaw == 'chrome' || mxAreaRaw == 'none' ? mxAreaRaw : 'all';
+    const mxIntensity = mxNum('matrix_intensity', 40, 100, 100);
+    const mxInterval = mxNum('rain_interval', 40, 250, 100);
+    const mxSize = mxNum('rain_size', 12, 32, 20);
+    const mxOpacity = mxNum('rain_opacity', 0, 35, 13);
 	const configuredColor = uci.get('termix', 'settings', 'custom_accent') ?? '';
 	const customColor = accent == 'custom' && match(configuredColor, /^#[0-9a-fA-F]{6}$/) ? configuredColor : '#f59145';
 	const red = int(substr(customColor, 1, 2), 16);
@@ -26,7 +40,7 @@
 -%}
 
 <!DOCTYPE html>
-<html lang="{{ dispatcher.lang }}" data-termix-accent="{{ accent }}" {{ darkpref ? `data-darkmode="${darkpref}"` : '' }} {{ accent == 'custom' ? `style="--primary-color-high:${customColor};--on-primary-color:${onCustomColor}"` : '' }}>
+<html lang="{{ dispatcher.lang }}" data-termix-accent="{{ accent }}" data-mx-fx="{{ mxFx }}" data-mx-glow="{{ mxGlow }}" data-mx-scanlines="{{ mxScanlines }}" data-mx-rain-area="{{ mxArea }}" data-mx-rain-interval="{{ mxInterval }}" data-mx-rain-size="{{ mxSize }}" data-mx-rain-opacity="{{ mxOpacity }}" {{ darkpref ? `data-darkmode="${darkpref}"` : '' }} {{ accent == 'custom' ? `style="--primary-color-high:${customColor};--on-primary-color:${onCustomColor}"` : '' }}>
 	<head>
 		<meta charset="utf-8">
 		<title>{{ striptags(`${boardinfo.hostname ?? '?'}${dispatched?.title ? ` | ${_(dispatched.title)}` : ''}`) }}</title>
@@ -44,7 +58,8 @@
 		<meta name="darkreader-lock">
 		<link rel="stylesheet" href="{{ media }}/cascade.css?v=1">
 		<link rel="stylesheet" media="only screen and (max-width: 854px)" href="{{ media }}/mobile.css?v=2" />
-		<link rel="stylesheet" href="{{ media }}/termix.css?v=51">
+		<link rel="stylesheet" href="{{ media }}/termix.css?v=0.2.0-rc1">
+		<style>:root{--mx-i:{{ mxIntensity }}%;--mx-rain-op:calc({{ mxOpacity }} / 100)}</style>
 		<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
 		{% if (node?.css): %}
 		<link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
