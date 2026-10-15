@@ -65,6 +65,7 @@ and scanlines. Effects are off by default and work with any accent. The
 **Matrix** palette is independent: choosing it does not enable animation.
 In dark mode, **Matrix color saturation (%)** blends its text and accents
 from white at 0% through pale green to the original vivid green at 100%.
+The default is 60%; saved saturation settings take precedence when upgrading.
 Adjust the rain area, interval, character size and opacity, or choose **No
 code rain** to use only the static effects. Options are kept when the effect
 is turned off.

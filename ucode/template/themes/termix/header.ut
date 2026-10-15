@@ -25,7 +25,7 @@
     const mxScanlines = uci.get('termix', 'settings', 'scanlines') == 'off' ? 'off' : 'on';
     const mxAreaRaw = uci.get('termix', 'settings', 'rain_area');
     const mxArea = mxAreaRaw == 'main' || mxAreaRaw == 'chrome' || mxAreaRaw == 'none' ? mxAreaRaw : 'all';
-    const mxSaturation = mxNum('matrix_intensity', 0, 100, 100);
+    const mxSaturation = mxNum('matrix_intensity', 0, 100, 60);
     const mxInterval = mxNum('rain_interval', 40, 250, 100);
     const mxSize = mxNum('rain_size', 12, 32, 20);
     const mxOpacity = mxNum('rain_opacity', 0, 35, 13);
@@ -58,7 +58,7 @@
 		<meta name="darkreader-lock">
 		<link rel="stylesheet" href="{{ media }}/cascade.css?v=1">
 		<link rel="stylesheet" media="only screen and (max-width: 854px)" href="{{ media }}/mobile.css?v=2" />
-		<link rel="stylesheet" href="{{ media }}/termix.css?v=0.2.0-rc1.4">
+		<link rel="stylesheet" href="{{ media }}/termix.css?v=0.2.0-rc1.5">
 		<style>:root{--mx-saturation:{{ mxSaturation }}%;--mx-rain-op:calc({{ mxOpacity }} / 100)}</style>
 		<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
 		{% if (node?.css): %}

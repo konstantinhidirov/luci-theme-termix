@@ -38,10 +38,10 @@ return view.extend({
     // Keep the original UCI key so existing preview configurations still work.
     var saturation = section.taboption('appearance', form.Value, 'matrix_intensity', _('Matrix color saturation (%)'),
       _('In dark mode: 0% gives white, 50% gives pale green, and 100% gives vivid Matrix green. Lower values soften the color without dimming the text.'));
-    saturation.default = '100';
+    saturation.default = '60';
     saturation.datatype = 'and(uinteger,range(0,100))';
     saturation.depends('accent', 'matrix');
-    saturation.placeholder = '100';
+    saturation.placeholder = '60';
 
     function flag(name, title, description, def) {
       var option = section.taboption('effects', form.Flag, name, title, description);
