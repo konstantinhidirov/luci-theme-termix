@@ -16,16 +16,29 @@ Termix code or assets.
 
 ![Termix theme in light mode on the LuCI Overview page](docs/screenshots/overview-light.png)
 
+### Matrix effects
+
+![Matrix effects and their settings in LuCI](docs/screenshots/matrix-effects-v0.2.0.png)
+
+The rain follows your accent color, including the original orange:
+
+![Matrix effects with the orange accent](docs/screenshots/matrix-orange-v0.2.0.png)
+
+The Matrix palette has its own saturation setting. The default is 60%:
+
+![Matrix palette and saturation settings](docs/screenshots/matrix-appearance-v0.2.0.png)
+
 ## Compatibility
 
-The theme was developed and tested with OpenWrt 25.12.5 and LuCI
-26.180.75667~128a781. OpenWrt 25.12 and newer use APK packages; older
+The theme was developed and tested with OpenWrt 25.12.5, initially with LuCI
+26.180.75667~128a781 and with 26.273.20498~1fcad1e for version 0.2.0.
+OpenWrt 25.12 and newer use APK packages; older
 releases require an IPK built with the corresponding SDK. Other release and
 LuCI combinations have not yet been tested.
 
 ## Install
 
-Once a release is published, download the APK for your OpenWrt release from
+Download the APK for your OpenWrt release from
 the [Releases page](https://github.com/konstantinhidirov/luci-theme-termix/releases)
 and install it on the router:
 
@@ -75,7 +88,8 @@ open, and when the device requests reduced motion. Rendering happens in the
 browser; low-powered clients should use a longer interval or disable rain.
 Characters use installed system fonts; no third-party font file is bundled.
 
-For the current preview and device checks, see [Matrix testing](docs/matrix-testing.md).
+For device checks, see [Matrix testing](docs/matrix-testing.md).
+See the [0.2.0 release notes](docs/releases/v0.2.0.md) for the changes in this release.
 
 ## Build an APK
 

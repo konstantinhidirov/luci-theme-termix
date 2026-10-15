@@ -1,7 +1,7 @@
-# Matrix effect preview
+# Matrix effects: checks and usage
 
-The `feature/matrix-effects` branch contains the local `0.2.0_rc1` preview.
-This is not a published release. OpenWrt package version: `0.2.0_rc1-r2`.
+Matrix effects are available from version 0.2.0. The OpenWrt package is
+`luci-theme-termix-0.2.0-r1.apk`.
 
 ## Try it
 
@@ -12,6 +12,8 @@ This is not a published release. OpenWrt package version: `0.2.0_rc1-r2`.
 4. Try **Everywhere**, **Content only**, and **Sidebar and top bar**.
    **No code rain** keeps only the selected static effects.
 5. Change the interval, size and opacity, then apply and reload.
+6. With the Matrix accent selected, try saturation at 0%, 60% and 100%.
+   The default is 60%. Lower values blend toward white without dimming text.
 
 The effect starts disabled and keeps its options when turned off. It is
 inactive in light mode, including when **Follow system** switches to light.
@@ -49,7 +51,7 @@ The Node tests exercise animation scheduling, suspension, high-DPI backing
 store limits, desktop clipping and the mobile drawer geometry. They do not
 replace visual checks in a real browser or physical device.
 
-## Preview verification (2026-10-15)
+## Verification (2026-10-15)
 
 - OpenWrt 25.12.5 x86/64, LuCI `26.273.20498~1fcad1e`.
 - Built using the OpenWrt 25.12.5 x86/64 SDK and the original pinned LuCI
@@ -63,8 +65,13 @@ replace visual checks in a real browser or physical device.
   effect attribute switches off and returns after the dialog closes.
 - At 412 CSS px: no horizontal overflow, usable controls, opening/closing
   the drawer, and rain visible in the drawer for the chrome-only area.
-- Physical phone rendering and sustained client CPU/battery use await
-  manual testing before a public release.
+- Phone testing exposed wide bands between mobile table records. Their
+  zebra row backgrounds are now suppressed at the mobile table breakpoint;
+  padding and thin borders remain.
+- Saturation was checked at 0%, 50% and 100%. The theme default is now 60%,
+  with existing saved choices taking precedence.
+- The user reviewed the effect on physical devices. Sustained client CPU
+  and battery use have not been measured.
 
 ## Revert the appearance
 
