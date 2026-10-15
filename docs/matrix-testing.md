@@ -1,7 +1,7 @@
 # Matrix effect preview
 
 The `feature/matrix-effects` branch contains the local `0.2.0_rc1` preview.
-This is not a published release. OpenWrt package version: `0.2.0_rc1-r1`.
+This is not a published release. OpenWrt package version: `0.2.0_rc1-r2`.
 
 ## Try it
 
@@ -48,6 +48,23 @@ git diff --check
 The Node tests exercise animation scheduling, suspension, high-DPI backing
 store limits, desktop clipping and the mobile drawer geometry. They do not
 replace visual checks in a real browser or physical device.
+
+## Preview verification (2026-10-15)
+
+- OpenWrt 25.12.5 x86/64, LuCI `26.273.20498~1fcad1e`.
+- Built using the OpenWrt 25.12.5 x86/64 SDK and the original pinned LuCI
+  feed. The package contains static theme assets and does not replace LuCI.
+- Nine Node lifecycle and geometry tests pass; both modified templates
+  compile with the target's ucode interpreter.
+- In the Codex in-app browser: Appearance/Effects tabs, dependent fields,
+  keyboard slider input, numeric input, saving and applying UCI values,
+  retaining parameters after disabling, and Matrix palette with no effects.
+- Light mode suppresses effects. During the LuCI apply dialog the active
+  effect attribute switches off and returns after the dialog closes.
+- At 412 CSS px: no horizontal overflow, usable controls, opening/closing
+  the drawer, and rain visible in the drawer for the chrome-only area.
+- Physical phone rendering and sustained client CPU/battery use await
+  manual testing before a public release.
 
 ## Revert the appearance
 

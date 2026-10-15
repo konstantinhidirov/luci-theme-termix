@@ -83,8 +83,9 @@ return view.extend({
         var range = E('input', {
           type: 'range', min: min, max: max, step: 1, value: input.value || def,
           'aria-label': title, 'aria-controls': input.id,
-          class: 'termix-effect-range', disabled: input.disabled
+          class: 'termix-effect-range'
         });
+        range.disabled = !!(this.readonly != null ? this.readonly : this.map.readonly);
         input.setAttribute('inputmode', 'numeric');
         range.addEventListener('input', function() {
           input.value = range.value;
@@ -94,7 +95,8 @@ return view.extend({
         input.addEventListener('input', function() {
           if (input.value !== '' && !isNaN(input.value)) range.value = input.value;
         });
-        return E('div', { class: 'termix-effect-slider' }, [range, node, E('span', {}, unit)]);
+        return E('div', { class: 'termix-effect-slider' }, [range,
+          E('div', { class: 'termix-effect-number' }, [node, E('span', {}, unit)])]);
       };
     }
 

@@ -363,6 +363,8 @@ header .nav .dropdown-menu li a:hover,header .nav .dropdown-menu li.termix-curre
 :root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-tabmenu > li:hover { background:var(--termix-hover)!important; }
 :root[data-termix-accent="matrix"][data-darkmode="true"] input[type="checkbox"]::before,
 :root[data-termix-accent="matrix"][data-darkmode="true"] input[type="radio"]::before { background:#000; border-color:var(--border-color-high); }
+:root[data-termix-accent="matrix"] input[type="checkbox"]:checked::before,
+:root[data-termix-accent="matrix"] input[type="radio"]:checked::before { background:var(--primary-color-high); border-color:var(--primary-color-high); }
 :root[data-termix-accent="matrix"][data-darkmode="true"] input[type="checkbox"]:checked::after,
 :root[data-termix-accent="matrix"][data-darkmode="true"] input[type="radio"]:checked::after,
 :root[data-termix-accent="matrix"][data-darkmode="true"] .cbi-value-field input[type="checkbox"]:checked::after { background:var(--on-primary-color); }
@@ -420,8 +422,10 @@ header .nav .dropdown-menu li a:hover,header .nav .dropdown-menu li.termix-curre
 }
 :root:not([data-termix-effects-active="true"]) #termix-matrix-rain { display:none; }
 .termix-effect-slider { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
-.termix-effect-slider > input:not([type="range"]) { width:5.5em; min-width:0; }
-.termix-effect-range { flex:0 1 220px; max-width:100%; min-width:100px; min-height:24px; height:24px; padding:0; border:0; background:none; box-shadow:none; accent-color:var(--primary-color-high); }
+.termix-effect-number { display:flex; flex:0 0 auto; align-items:center; gap:8px; min-width:0; }
+.termix-effect-number > div { width:5.5em; min-width:0; }
+.termix-effect-slider input:not([type="range"]) { width:5.5em; min-width:0; max-width:100%; }
+.termix-effect-range { flex:1 1 150px; max-width:220px; min-width:100px; min-height:24px; height:24px; padding:0; border:0; background:none; box-shadow:none; accent-color:var(--primary-color-high); }
 @media (prefers-reduced-motion:reduce) {
   #termix-matrix-rain { display:none!important; }
   :root[data-termix-effects-active="true"][data-mx-scanlines="on"] body::after { content:none; }
