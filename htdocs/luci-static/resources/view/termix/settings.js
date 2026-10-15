@@ -35,12 +35,13 @@ return view.extend({
       return /^#[0-9a-f]{6}$/i.test(value) || _('Enter a color in #RRGGBB format.');
     };
 
-    var intensity = section.taboption('appearance', form.Value, 'matrix_intensity', _('Matrix green intensity'),
-      _('Brightness of the Matrix palette. This does not enable effects.'));
-    intensity.default = '100';
-    intensity.datatype = 'and(uinteger,range(40,100))';
-    intensity.depends('accent', 'matrix');
-    intensity.placeholder = '100';
+    // Keep the original UCI key so existing preview configurations still work.
+    var saturation = section.taboption('appearance', form.Value, 'matrix_intensity', _('Matrix color saturation (%)'),
+      _('In dark mode: 0% gives white, 50% gives pale green, and 100% gives vivid Matrix green. Lower values soften the color without dimming the text.'));
+    saturation.default = '100';
+    saturation.datatype = 'and(uinteger,range(0,100))';
+    saturation.depends('accent', 'matrix');
+    saturation.placeholder = '100';
 
     function flag(name, title, description, def) {
       var option = section.taboption('effects', form.Flag, name, title, description);

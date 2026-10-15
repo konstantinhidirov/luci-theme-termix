@@ -63,6 +63,8 @@ The theme starts in dark mode with an orange accent. Settings are stored in
 The **Effects** tab contains an optional Matrix effect with code rain, glow
 and scanlines. Effects are off by default and work with any accent. The
 **Matrix** palette is independent: choosing it does not enable animation.
+In dark mode, **Matrix color saturation (%)** blends its text and accents
+from white at 0% through pale green to the original vivid green at 100%.
 Adjust the rain area, interval, character size and opacity, or choose **No
 code rain** to use only the static effects. Options are kept when the effect
 is turned off.

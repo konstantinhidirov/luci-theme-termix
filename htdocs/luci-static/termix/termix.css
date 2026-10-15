@@ -344,9 +344,9 @@ header .nav .dropdown-menu li a:hover,header .nav .dropdown-menu li.termix-curre
 
 /* Matrix palette and glow adapted from jbakker81, Apache-2.0.
    https://github.com/konstantinhidirov/luci-theme-termix/issues/1 */
-/* --mx-i (green intensity, 40-100%) is set by header.ut from the Termix Theme settings. */
+/* Saturation blends vivid green toward white instead of dimming it toward black. */
 :root[data-termix-accent="matrix"][data-darkmode="false"] { --primary-color-high:#087b2b; --on-primary-color:#fff; }
-:root[data-termix-accent="matrix"][data-darkmode="true"] { --mx-g:color-mix(in srgb,#00ff41 var(--mx-i,100%),#000); --primary-color-high:var(--mx-g); --on-primary-color:#001a06; }
+:root[data-termix-accent="matrix"][data-darkmode="true"] { --mx-g:color-mix(in srgb,#00ff41 var(--mx-saturation,100%),#fff); --primary-color-high:var(--mx-g); --on-primary-color:#001a06; }
 :root[data-termix-accent="matrix"][data-darkmode="true"] {
   --background-color-high:#000; --background-color-medium:#010a03; --background-color-low:#021307;
   --border-color-high:color-mix(in srgb,var(--mx-g) 35%,#000); --border-color-medium:color-mix(in srgb,var(--mx-g) 24%,#000); --border-color-low:color-mix(in srgb,var(--mx-g) 16%,#000);
